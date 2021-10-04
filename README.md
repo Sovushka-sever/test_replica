@@ -11,7 +11,7 @@
 
 Для начала вам нужно склонировать репозиторий в требуемую директорию
 ```
-git clone https://github.com/Sovushka-sever/my_library.git
+git clone https://github.com/Sovushka-sever/test_replica.git
 ```
 - Настроить виртуальное окружение и его активировать:
 ```
