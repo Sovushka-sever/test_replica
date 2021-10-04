@@ -12,7 +12,7 @@ def create_workers(request):
         worker.save()
         response += f' {worker}'
 
-    return HttpResponse()
+    return HttpResponse(response)
 
 
 def main_db(request):

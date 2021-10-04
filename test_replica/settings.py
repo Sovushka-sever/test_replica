@@ -1,6 +1,7 @@
 import os
+from dotenv import load_dotenv
 from django.core.management.utils import get_random_secret_key
-
+load_dotenv()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -67,18 +68,20 @@ WSGI_APPLICATION = 'my_library.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': '/cloudsql/project_id:region:master_instance_id',
-        'NAME': 'pg_master',
-        'ПОЛЬЗОВАТЕЛЬ': 'pg_user',
-        'ПАРОЛЬ': 'master_password',
+        'ENGINE': os.environ.get('DB_ENGINE'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     },
     'replica_1': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': '/cloudsql/project_id:region:replica1_instance_id',
-        'NAME': 'pg_replica1',
-        'USER': 'pg_user',
-        'PASSWORD': 'replica1_password',
+        'ENGINE': os.environ.get('DB_ENGINE_REPLICA'),
+        'NAME': os.environ.get('DB_NAME_REPLICA'),
+        'USER': os.environ.get('POSTGRES_USER_REPLICA'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD_REPLICA'),
+        'HOST': os.environ.get('DB_HOST_REPLICA'),
+        'PORT': os.environ.get('DB_PORT_REPLICA'),
     },
 }
 
